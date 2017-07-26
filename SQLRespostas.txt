@@ -1,0 +1,36 @@
+﻿#######
+#QUERY#
+#######
+
+5-
+	a) select Nome from clienteViaVerde natural inner join clienteViaVerdePass
+
+	b) select Matricula from clienteViaVerde, absatecimento, tem, servico, clienteServico where clienteViaVerde.IdViaVerde=abastecimento.idviaverde and abastecimento.idlocalP=tem.idlocalP and tem.idlocal=servico.idlocal and servico.nif=clienteservico.nif and  NomeLocal='GalpEvora'
+
+	c) select Matricula from clienteViaVerde natural inner join passagemae natural inner join tem natural inner join portagemAutoEstrada where saida='2' and IdLocal='A2'
+
+	d) select NomeLocal, Data from servico natural inner join portagemautoestada natural inner join tem natural inner join passagemAE natural inner join clienteviaverde where IdViaVerde='123' 
+
+	e) select count (valor) from clienteViaVerde natural inner join abastecimento natural inner join passagemAE natural inner join tem natural inner join portagemAutoEstrada natural inner join cancelaParq natural inner join parque where IdViaVerde='123' and Data between 31-10-2013 23:59:59 and 01-12-2013 00:00:00
+ 
+	f) select count (valor) from clienteViaVerde natural inner join abastecimento natural inner join passagemAE natural inner join tem natural inner join portagemAutoEstrada natural inner join cancelaParq natural inner join parque where Nome='Gomes' and Data between 30-09-2013 23:59:59 and 01-11-2013 00:00:00 
+
+	g) select Nome from abastecimento natural inner join clienteViaVerde
+
+	h) select Nome from cancelaParq natural inner join clienteViaVerde 
+	
+	i) select Nome max(EntradaSaida) (from clienteViaVerde natural inner join cancelaParq where EntradaSaida='Saida') except (from clienteViaverde natural inner join cancelaParq where EntradaSaida='Entrada')
+
+	j) select IdLocal max(IdViaVerde) from ponte natural inner join tem natural inner join passagemAE natural inner join clienteViaVerde where Data like %2014%
+
+	k) select IdLocal max(IdViaVerde) from clienteservico natural inner join servico natural inner join bomba natural inner join tem natural inner join abastecimento natural inner join clienteViaVerde where Nome='Galp'
+
+	l)
+
+	m) select IdLocalP max(valor) from servico natural inner join ponte natural inner join tem natural inner join abastecimento natural inner join portagemAutoEstrada
+	
+	n) select Nome from portagemAutoEstrada natural inner join passagemAE natural inner join clienteViaVerde where Data between 31-08-2014 23:59:59 and 01-10-2014 00:00:00 and saida='1' and saida='2' and saida='3'
+
+	o) (select Nome from clienteViaVerde) except (select Nome from ponte natural inner join tem natural inner join passagemAE natural inner join clienteViaVerde)
+
+	p) (select NomeLocal from servico) except (select NomeLocal from servico natural inner join tem natural inner join cancelaParq natural inner join passagemAE natural inner join abastecimento natural inner join clienteViaVerde)
